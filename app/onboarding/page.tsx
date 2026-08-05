@@ -6,6 +6,9 @@ import { Logo } from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import { saveGoal } from "@/lib/storage";
+import { detectGoalCategory } from "@/lib/goal-engine";
+import { Goal } from "@/types/goal"
 
 const sampleGoals = [
   "🎓 Get into university",
@@ -27,9 +30,18 @@ export default function OnboardingPage() {
   const handleContinue = () => {
     if (!goal.trim()) return;
 
-    localStorage.setItem("nort-goal", goal)
+    const trimmedGoal = goal.trim()
 
-    router.push("/dashboard")
+    const goalObject: Goal = {
+      id: crypto.randomUUID(),
+      title: trimmedGoal,
+      category: detectGoalCategory(goal),
+      progress: 0,
+      createdAt: new Date().toISOString(),
+    };
+
+    saveGoal(goalObject);
+    router.push("/onboarding/step-2");
   };
 
   return (

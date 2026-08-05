@@ -5,16 +5,18 @@ import { Sparkles, CheckCircle2, Target, TrendingUp, Calendar } from "lucide-rea
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { getGoal } from "@/lib/storage"
+import { Goal } from "@/types/goal"
 
 export default function DashboardPage() {
-  const [goal, setGoal] = useState<string | null>(null);
+  const [goal, setGoal] = useState<Goal | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    const savedGoal = localStorage.getItem("north-goal");
+    const savedGoal = getGoal();
     setGoal(savedGoal);
-    setIsLoading(false);
+    setIsLoading(false)
   }, []);
 
   const tasks = [
@@ -49,10 +51,13 @@ export default function DashboardPage() {
                 {isLoading ? (
                   <span className="animate-pulse text-neutral-500">Loading goal...</span>
                 ) : (
-                  goal || "No goal selected."
+                  goal?.title || "No goal selected."
                 )}
               </div>
             </div>
+            {goal && (
+              <p className="mt-2 text-sm text-neutral-400">Category: {goal?.category}</p>
+            )}
             {!isLoading && !goal && (
               <Button
                 variant="outline"
