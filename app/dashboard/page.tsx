@@ -10,6 +10,7 @@ import { Goal } from "@/types/goal"
 import { getRoadmap } from "@/lib/storage";
 import { Roadmap } from "@/types/roadmap";
 import { ProgressCard } from "@/components/dashboard/progress-card";
+import { calculateProgress } from "@/lib/progress";
 
 export default function DashboardPage() {
   const [goal, setGoal] = useState<Goal | null>(null);
@@ -82,7 +83,7 @@ export default function DashboardPage() {
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           
-          <ProgressCard progress={0} />
+          <ProgressCard progress={roadmap ? calculateProgress(roadmap) : 0} />
 
           {/* AI Mentor Card */}
           <Card className="border-neutral-200/80 shadow-sm md:col-span-1 lg:col-span-2">
