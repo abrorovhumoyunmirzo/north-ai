@@ -15,7 +15,3 @@ export default function Home() {
     </>
   )
 }
-
-export default function LoginPage() {
-  return <div>Login</div>;
-}
