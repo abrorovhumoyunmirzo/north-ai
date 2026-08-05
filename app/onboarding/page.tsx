@@ -6,9 +6,10 @@ import { Logo } from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { saveGoal } from "@/lib/storage";
+import { saveGoal, saveRoadmap } from "@/lib/storage";
 import { detectGoalCategory } from "@/lib/goal-engine";
 import { Goal } from "@/types/goal"
+import { generateRoadmap } from "@/lib/roadmap-generator";
 
 const sampleGoals = [
   "🎓 Get into university",
@@ -41,7 +42,15 @@ export default function OnboardingPage() {
     };
 
     saveGoal(goalObject);
-    router.push("/onboarding/step-2");
+    
+    const roadmap = generateRoadmap(
+      goalObject.id,
+      goalObject.category
+    );
+
+    saveRoadmap(roadmap);
+
+    router.push("/onboarding/step-2")
   };
 
   return (

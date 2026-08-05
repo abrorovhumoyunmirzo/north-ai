@@ -7,15 +7,23 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { getGoal } from "@/lib/storage"
 import { Goal } from "@/types/goal"
+import { getRoadmap } from "@/lib/storage";
+import { Roadmap } from "@/types/roadmap";
+import { ProgressCard } from "@/components/dashboard/progress-card";
 
 export default function DashboardPage() {
   const [goal, setGoal] = useState<Goal | null>(null);
+  const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const savedGoal = getGoal();
+    const savedRoadmap = getRoadmap();
+
     setGoal(savedGoal);
+    setRoadmap(savedRoadmap);
+
     setIsLoading(false)
   }, []);
 
@@ -74,24 +82,7 @@ export default function DashboardPage() {
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           
-          {/* Progress Card */}
-          <Card className="border-neutral-200/80 shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-semibold text-neutral-600">
-                Overall Progress
-              </CardTitle>
-              <TrendingUp className="h-4 w-4 text-neutral-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-neutral-900">0%</div>
-              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-neutral-100">
-                <div className="h-full w-0 rounded-full bg-neutral-900 transition-all duration-500" />
-              </div>
-              <p className="mt-3 text-xs text-neutral-500">
-                Your journey starts today. Complete your first focus task.
-              </p>
-            </CardContent>
-          </Card>
+          <ProgressCard progress={0} />
 
           {/* AI Mentor Card */}
           <Card className="border-neutral-200/80 shadow-sm md:col-span-1 lg:col-span-2">
@@ -140,6 +131,57 @@ export default function DashboardPage() {
               </ul>
             </CardContent>
           </Card>
+          {roadmap && (
+  <div className="space-y-6 md:col-span-2 lg:col-span-3">
+    <div className="flex items-center justify-between">
+      <h2 className="text-xl font-bold tracking-tight text-neutral-900">
+        Your Roadmap
+      </h2>
+      <span className="text-xs font-medium text-neutral-400">
+        {roadmap.milestones.length} Personalized Plan
+      </span>
+    </div>
+
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {roadmap.milestones.map((milestone) => (
+        <Card key={milestone.id} className="border-neutral-200/80 shadow-sm">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base font-bold text-neutral-900">
+              {milestone.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2.5">
+              {milestone.tasks.map((task) => (
+                <li
+                  key={task.id}
+                  className="flex items-start gap-2.5 text-sm text-neutral-700"
+                >
+                  <CheckCircle2
+                    className={`mt-0.5 h-4 w-4 shrink-0 ${
+                      task.completed
+                        ? "text-emerald-500"
+                        : "text-neutral-300"
+                    }`}
+                  />
+                  <span
+                    className={
+                      task.completed
+                        ? "line-through text-neutral-400"
+                        : "text-neutral-700"
+                    }
+                  >
+                    {task.title}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+)}
 
         </div>
       </div>
