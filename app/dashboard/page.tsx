@@ -11,6 +11,7 @@ import { getRoadmap } from "@/lib/storage";
 import { Roadmap } from "@/types/roadmap";
 import { ProgressCard } from "@/components/dashboard/progress-card";
 import { calculateProgress } from "@/lib/progress";
+import { RoadmapSection } from "@/components/dashboard/roadmap-section"
 
 export default function DashboardPage() {
   const [goal, setGoal] = useState<Goal | null>(null);
@@ -132,57 +133,10 @@ export default function DashboardPage() {
               </ul>
             </CardContent>
           </Card>
-          {roadmap && (
-  <div className="space-y-6 md:col-span-2 lg:col-span-3">
-    <div className="flex items-center justify-between">
-      <h2 className="text-xl font-bold tracking-tight text-neutral-900">
-        Your Roadmap
-      </h2>
-      <span className="text-xs font-medium text-neutral-400">
-        {roadmap.milestones.length} Personalized Plan
-      </span>
-    </div>
-
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-      {roadmap.milestones.map((milestone) => (
-        <Card key={milestone.id} className="border-neutral-200/80 shadow-sm">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base font-bold text-neutral-900">
-              {milestone.title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2.5">
-              {milestone.tasks.map((task) => (
-                <li
-                  key={task.id}
-                  className="flex items-start gap-2.5 text-sm text-neutral-700"
-                >
-                  <CheckCircle2
-                    className={`mt-0.5 h-4 w-4 shrink-0 ${
-                      task.completed
-                        ? "text-emerald-500"
-                        : "text-neutral-300"
-                    }`}
-                  />
-                  <span
-                    className={
-                      task.completed
-                        ? "line-through text-neutral-400"
-                        : "text-neutral-700"
-                    }
-                  >
-                    {task.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  </div>
-)}
+              <RoadmapSection
+              roadmap={roadmap}
+              setRoadmap={setRoadmap}
+              />
 
         </div>
       </div>

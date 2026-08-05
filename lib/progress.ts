@@ -25,3 +25,23 @@ export function calculateProgress(roadmap: Roadmap): number {
 
     return Math.round((completed / total) * 100);
 }
+
+export function toggleTask(
+    roadmap: Roadmap,
+    taskId: string
+): Roadmap {
+    return {
+        ...roadmap,
+        milestones: roadmap.milestones.map((milestone) => ({
+            ...milestone,
+            tasks: milestone.tasks.map((task) =>
+            task.id === taskId
+        ? {
+            ...task,
+            completed: !task.completed,
+        }
+        : task
+            ),
+        })),
+    };
+}
