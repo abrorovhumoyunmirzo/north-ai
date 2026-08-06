@@ -42,10 +42,10 @@ export function Navbar() {
         {/* Right: Desktop Action Buttons */}
         <div className="hidden items-center gap-3 md:flex">
           <Button variant="ghost" size="sm" asChild className="text-neutral-600 hover:text-neutral-900">
-            <Link href="/signin">Sign In</Link>
+            <Link href="/login">Sign In</Link>
           </Button>
           <Button size="sm" asChild className="bg-neutral-900 text-white shadow-sm hover:bg-neutral-800">
-            <Link href="/get-started">Get Started</Link>
+            <Link href="/signup">Get Started</Link>
           </Button>
         </div>
 
