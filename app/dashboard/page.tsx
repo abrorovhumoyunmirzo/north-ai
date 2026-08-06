@@ -15,6 +15,7 @@ import StreakCard from "@/components/dashboard/cards/streak-card";
 import TasksCard from "@/components/dashboard/cards/tasks-card";
 import ScoreCard from "@/components/dashboard/cards/score-card";
 import ProgressCard from "@/components/dashboard/cards/progress-card";
+import Sidebar from "@/components/dashboard/sidebar";
 
 
 export default function DashboardPage() {
@@ -41,9 +42,14 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white p-4 sm:p-6 lg:p-10">
-      <div className="mx-auto max-w-6xl space-y-8">
+    <div className=" flex min-h-screen bg-white p-4 sm:p-6 lg:p-10">
         
+      <Sidebar />
+
+      <main className="flex-1 p-4 sm:p-6 lg:p-10">
+
+        <div className="mx-auto max-w-6xl space-y-8">
+
         {/* Welcome Header */}
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl">
@@ -95,8 +101,6 @@ export default function DashboardPage() {
 
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          
-          <ProgressCard progress={roadmap ? calculateProgress(roadmap) : 0} />
 
           {/* AI Mentor Card */}
           <Card className="border-neutral-200/80 shadow-sm md:col-span-1 lg:col-span-2">
@@ -112,7 +116,7 @@ export default function DashboardPage() {
             <CardContent className="pt-2">
               <p className="text-sm leading-relaxed text-neutral-600">
                 {goal
-                  ? `Welcome aboard! I've initialized your roadmap for "${goal}". Focus on completing your first tasks today to build your momentum.`
+                  ? `Welcome aboard! I've initialized your roadmap for "${goal.title}". Focus on completing your first tasks today to build your momentum.`
                   : "Welcome to North AI! Set your primary goal to activate personalized guidance and daily roadmap updates."}
               </p>
             </CardContent>
@@ -149,9 +153,9 @@ export default function DashboardPage() {
               roadmap={roadmap}
               setRoadmap={setRoadmap}
               />
-
-        </div>
-      </div>
+          </div>
+          </div>
+      </main>
     </div>
   );
 }

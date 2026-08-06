@@ -80,10 +80,10 @@ export function Navbar() {
           </nav>
           <div className="mt-4 flex flex-col gap-2 pt-4 border-t border-neutral-100">
             <Button variant="outline" asChild className="w-full justify-center">
-              <Link href="/signin">Sign In</Link>
+              <Link href="/login">Sign In</Link>
             </Button>
             <Button asChild className="w-full justify-center bg-neutral-900 text-white hover:bg-neutral-800">
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/signup">Get Started</Link>
             </Button>
           </div>
         </div>
