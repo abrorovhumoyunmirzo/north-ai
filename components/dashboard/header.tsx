@@ -20,7 +20,7 @@ export default function DashboardHeader() {
                 </button>
 
                 <div className="flex item-center gap-3 rounded-xl border border-neutral-200 px-3 py-2">
-                    <div className="flex h-9 w-9 items-centered justify-center rounded-full bg-neutral-900 text-sm font-semibold text-white">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900 text-sm font-semibold text-white">
                         H
                     </div>
 

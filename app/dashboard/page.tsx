@@ -8,16 +8,21 @@ import { useRouter } from "next/navigation";
 import { getGoal } from "@/lib/storage"
 import { Goal } from "@/types/goal"
 import { getRoadmap } from "@/lib/storage";
-import { Roadmap } from "@/types/roadmap";
-import { ProgressCard } from "@/components/dashboard/progress-card";
+import { Roadmap } from "@/lib/roadmap-generator";
 import { calculateProgress } from "@/lib/progress";
 import { RoadmapSection } from "@/components/dashboard/roadmap-section"
+import StreakCard from "@/components/dashboard/cards/streak-card";
+import TasksCard from "@/components/dashboard/cards/tasks-card";
+import ScoreCard from "@/components/dashboard/cards/score-card";
+import ProgressCard from "@/components/dashboard/cards/progress-card";
+
 
 export default function DashboardPage() {
   const [goal, setGoal] = useState<Goal | null>(null);
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const progress = roadmap ? calculateProgress(roadmap) : 0;
 
   useEffect(() => {
     const savedGoal = getGoal();
@@ -47,6 +52,13 @@ export default function DashboardPage() {
           <p className="mt-1 text-base text-neutral-500">
             Here is your daily overview and AI guidance for today.
           </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <ProgressCard progress={progress} />
+          <StreakCard />
+          <TasksCard />
+          <ScoreCard />
         </div>
 
         {/* Goal Banner Card */}
