@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 North AI
 
-## Getting Started
+> Your AI-powered mentor for achieving ambitious goals.
 
-First, run the development server:
+North AI is a modern productivity platform that helps users define goals, generate structured roadmaps, track progress, and stay consistent using AI-driven guidance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- 🎯 Goal onboarding
+- 🗺️ Personalized roadmap generation
+- ✅ Interactive task tracking
+- 📈 Progress calculation
+- 🔥 Streak system
+- 📊 Productivity dashboard
+- 👤 Authentication
+- ☁️ Supabase integration
+- 📱 Responsive UI
+
+---
+
+## 🖥️ Screenshots
+
+
+### Landing Page
+
+![Landing](./screenshots/landing.png)
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Login
+
+![Login](./screenshots/login.png)
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js 15
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Supabase
+- Lucide Icons
+- Vercel
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+components/
+lib/
+types/
+public/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/abrorovhumoyunmirzo/north-ai.git
 
-## Learn More
+cd north-ai
 
-To learn more about Next.js, take a look at the following resources:
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌐 Live Demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Vercel**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+https://north-ai-mu.vercel.app/
+
+---
+
+## 🎯 Roadmap
+
+- ✅ Landing Page
+- ✅ Dashboard
+- ✅ Goal Engine
+- ✅ Roadmap Generator
+- ✅ Progress Tracker
+- ✅ Authentication UI
+- ✅ Sidebar Navigation
+- 🔄 Supabase Database
+- 🔄 AI Mentor
+- 🔄 Notifications
+- 🔄 Mobile Optimization
+
+---
+
+## 📈 Future Features
+
+- GPT-powered AI Mentor
+- Daily planning
+- Smart reminders
+- Calendar integration
+- Team collaboration
+- Habit tracking
+- Analytics
+
+---
+
+## 👨‍💻 Author
+
+**Humoyunmirzp Abrorov**
+
+AI & Full-Stack Developer
+
+GitHub:
+https://github.com/abrorovhumoyunmirzo
+
+LinkedIn:
+(Coming Soon)
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
